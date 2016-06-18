@@ -5,8 +5,8 @@
   "main": "test.js",
   "dependencies": {
     "fs": "^0.0.2",
-    "twauth": "^1.0.1",
-    "twit": "^2.2.4"
+    "twit": "^2.2.4",
+    "lowdb": "^0.12.5"
   },
   "devDependencies": {},
   "scripts": {

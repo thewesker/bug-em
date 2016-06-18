@@ -1,5 +1,8 @@
 var Twit = require('twit')
 var fs = require('fs')
+var low = require('lowdb');
+var storage = require('lowdb/file-sync');
+var session = low('./config.json', {'storage': storage});
 
 var T = new Twit({
   consumer_key:         'XEpOzvNVnIL0z5cFggsZQzrTt',
@@ -15,7 +18,9 @@ var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 216776
 stream.on('tweet', function (tweet) {
 	if (tweet.user.screen_name === 'realDonaldTrump') {
 	var b64content = fs.readFileSync('./pics/trump.gif', { encoding: 'base64' })
-
+	var trumpmessages = session.object.trumpmessages;
+	var randomtrumpmessage = trumpmessages[Math.floor(Math.random() * trumpmessages.length)];
+	
 // first we must post the media to Twitter
 T.post('media/upload', { media_data: b64content }, function (err, data, response) {
   // now we can assign alt text to the media, for use by screen readers and
@@ -29,10 +34,10 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
   T.post('media/metadata/create', meta_params, function (err, data, response) {
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
-      var params = {in_reply_to_status_id: nameID, status: '@' + name + " Delete your account.", media_ids: [mediaIdStr] }
+      var params = {in_reply_to_status_id: nameID, status: '@' + name + ' ' + randomtrumpmessage, media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
-        console.log("Replied to Trump's Tweet")
+        console.log("Replied to Trump's Tweet with " + randomtrumpmessage)
 		})
       }
     })
@@ -40,7 +45,8 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 }
   if (tweet.user.screen_name === 'HillaryClinton') {
 	var b64content = fs.readFileSync('./pics/hillary.gif', { encoding: 'base64' })
-
+	var hillarymessages = session.object.hillarymessages;
+	var randomhillarymessage = hillarymessages[Math.floor(Math.random() * hillarymessages.length)];
 // first we must post the media to Twitter
 T.post('media/upload', { media_data: b64content }, function (err, data, response) {
   // now we can assign alt text to the media, for use by screen readers and
@@ -57,7 +63,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
       var params = {in_reply_to_status_id: nameID, status: '@' + name + " Release the Benghazi emails!", media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
-        console.log("Replied to Hillary's Tweet")
+        console.log("Replied to Hillary's Tweet with " + randomhillarymessage)
 		})
       }
     })
