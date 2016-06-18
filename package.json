@@ -12,6 +12,6 @@
   "scripts": {
     "test": "node app.js"
   },
-  "author": "thewesker",
+  "author": "awfuljack",
   "license": "ISC"
 }
