@@ -1,0 +1,17 @@
+{
+  "name": "polibug",
+  "version": "1.0.0",
+  "description": "Bot",
+  "main": "test.js",
+  "dependencies": {
+    "fs": "^0.0.2",
+    "twauth": "^1.0.1",
+    "twit": "^2.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
