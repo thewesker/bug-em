@@ -1,7 +1,7 @@
 {
   "name": "polibug",
   "version": "1.0.0",
-  "description": "Bot",
+  "description": "A bot that bugs politicians and others",
   "main": "test.js",
   "dependencies": {
     "fs": "^0.0.2",
@@ -12,6 +12,6 @@
   "scripts": {
     "test": "node test.js"
   },
-  "author": "",
+  "author": "thewesker",
   "license": "ISC"
 }
