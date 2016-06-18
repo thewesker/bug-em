@@ -40,7 +40,6 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Trump's Tweet with " + randomtrumpmessage)
 		})
-		T.post('direct_messages/new', DMparams, function (err, data, response) { console.log("Sent DM to assbutt") })
       }
     })
   })
@@ -68,7 +67,6 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Hillary's Tweet with " + randomhillarymessage)
 		})
-		T.post('direct_messages/new', DMparams, function (err, data, response) { console.log("Sent DM to assbutt") })
       }
     })
   })
@@ -96,7 +94,6 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Bernie's Tweet with " + randomberniemessage)
 		})
-		T.post('direct_messages/new', DMparams, function (err, data, response) { console.log("Sent DM to assbutt") })
       }
     })
   })
@@ -124,7 +121,6 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Hulk's Tweet with " + randomhulkmessage)
 		})
-		T.post('direct_messages/new', DMparams, function (err, data, response) { console.log("Sent DM to assbutt") })
       }
     })
   })
