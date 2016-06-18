@@ -14,7 +14,7 @@ var T = new Twit({
 
 // filter the public stream by english tweets containing `#apple`
 //
-var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 216776631, 179932936, 1214598626' }) 
+var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 216776631, 179932936' }) 
 stream.on('tweet', function (tweet) {
 	if (tweet.user.screen_name === 'realDonaldTrump') {
 	var b64content = fs.readFileSync('./pics/trump.gif', { encoding: 'base64' })
