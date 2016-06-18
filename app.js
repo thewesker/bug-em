@@ -112,7 +112,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
   T.post('media/metadata/create', meta_params, function (err, data, response) {
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
-      var params = {in_reply_to_status_id: nameID, status: '@' + name + " " randomhulkmessage, media_ids: [mediaIdStr] }
+      var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomhulkmessage, media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Hulk's Tweet with " + randomhulkmessage)
