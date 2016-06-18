@@ -35,10 +35,12 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
       var params = {in_reply_to_status_id: nameID, status: '@' + name + ' ' + randomtrumpmessage, media_ids: [mediaIdStr] }
+      var DMparams = {user_id: '34867699', text: 'I tweeted ' + randomtrumpmessage + ' at ' + name, media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Trump's Tweet with " + randomtrumpmessage)
 		})
+		T.post('direct_messages/new', DMparams, function (err, data, response) { console.log("Sent DM to assbutt") })
       }
     })
   })
@@ -61,10 +63,12 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
       var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomhillarymessage, media_ids: [mediaIdStr] }
+      var DMparams = {user_id: '34867699', text: 'I tweeted ' + randomtrumpmessage + ' at ' + name, media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Hillary's Tweet with " + randomhillarymessage)
 		})
+		T.post('direct_messages/new', DMparams, function (err, data, response) { console.log("Sent DM to assbutt") })
       }
     })
   })
@@ -87,10 +91,12 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
       var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomberniemessage, media_ids: [mediaIdStr] }
+      var DMparams = {user_id: '34867699', text: 'I tweeted ' + randomtrumpmessage + ' at ' + name, media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Bernie's Tweet with " + randomberniemessage)
 		})
+		T.post('direct_messages/new', DMparams, function (err, data, response) { console.log("Sent DM to assbutt") })
       }
     })
   })
@@ -113,10 +119,12 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
       var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomhulkmessage, media_ids: [mediaIdStr] }
+      var DMparams = {user_id: '34867699', text: 'I tweeted ' + randomtrumpmessage + ' at ' + name, media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Hulk's Tweet with " + randomhulkmessage)
 		})
+		T.post('direct_messages/new', DMparams, function (err, data, response) { console.log("Sent DM to assbutt") })
       }
     })
   })
