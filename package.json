@@ -2,7 +2,7 @@
   "name": "polibug",
   "version": "1.0.0",
   "description": "A bot that bugs politicians and others",
-  "main": "test.js",
+  "main": "app.js",
   "dependencies": {
     "fs": "^0.0.2",
     "twit": "^2.2.4",
@@ -10,7 +10,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node test.js"
+    "test": "node app.js"
   },
   "author": "thewesker",
   "license": "ISC"
