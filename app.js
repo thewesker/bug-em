@@ -5,10 +5,10 @@ var storage = require('lowdb/file-sync');
 var session = low('./config.json', {'storage': storage});
 
 var T = new Twit({
-  consumer_key:         '',
-  consumer_secret:      '',
-  access_token:         '',
-  access_token_secret:  '',
+  consumer_key:         'XEpOzvNVnIL0z5cFggsZQzrTt',
+  consumer_secret:      'tsOwdaDQXKisIYDhGXSo1552NLhgJdDtd3gglsBqBUQrbmGzG2',
+  access_token:         '3220758997-Z5PIScOrRfjV3CsabXROoLObAMQyRxO9XZXu3qh',
+  access_token_secret:  'K01MHdAtxZBflo1yf7yFG25j7180RrT16sSNkF663ExAg',
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 })
 
