@@ -121,30 +121,4 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     })
   })
 }
-	if (tweet.user.screen_name === 'AwfulJack') {
-	var b64content = fs.readFileSync('./pics/hulk.gif', { encoding: 'base64' })
-	var hulkmessages = session.object.hulkmessages;
-	var randomhulkmessage = hulkmessages[Math.floor(Math.random() * hulkmessages.length)];
-// first we must post the media to Twitter
-T.post('media/upload', { media_data: b64content }, function (err, data, response) {
-  // now we can assign alt text to the media, for use by screen readers and
-  // other text-based presentations and interpreters
-  var mediaIdStr = data.media_id_string
-  var altText = "There isn't actually much point to this but whatever"
-  var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
-  var nameID = tweet.id_str;
-  var name = tweet.user.screen_name;
-
-  T.post('media/metadata/create', meta_params, function (err, data, response) {
-    if (!err) {
-      // now we can reference the media and post a tweet (media will attach to the tweet)
-      var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomhulkmessage, media_ids: [mediaIdStr] }
-
-      T.post('statuses/update', params, function (err, data, response) {
-        console.log("Replied to Hulk's Tweet with " + randomhulkmessage)
-		})
-      }
-    })
-  })
-}
 })
