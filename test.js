@@ -11,7 +11,7 @@ var T = new Twit({
 
 // filter the public stream by english tweets containing `#apple`
 //
-var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 216776631' }) 
+var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 216776631, 179932936' }) 
 stream.on('tweet', function (tweet) {
 	if (tweet.user.screen_name === 'realDonaldTrump') {
 	var b64content = fs.readFileSync('./pics/trump.gif', { encoding: 'base64' })
@@ -83,6 +83,31 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Bernie's Tweet")
+		})
+      }
+    })
+  })
+}
+	if (tweet.user.screen_name === 'HulkHogan') {
+	var b64content = fs.readFileSync('./pics/hulk.gif', { encoding: 'base64' })
+
+// first we must post the media to Twitter
+T.post('media/upload', { media_data: b64content }, function (err, data, response) {
+  // now we can assign alt text to the media, for use by screen readers and
+  // other text-based presentations and interpreters
+  var mediaIdStr = data.media_id_string
+  var altText = "Small flowers in a planter on a sunny balcony, blossoming."
+  var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
+  var nameID = tweet.id_str;
+  var name = tweet.user.screen_name;
+
+  T.post('media/metadata/create', meta_params, function (err, data, response) {
+    if (!err) {
+      // now we can reference the media and post a tweet (media will attach to the tweet)
+      var params = {in_reply_to_status_id: nameID, status: '@' + name + " You’re a thin-skinned racist baby and a terrible parent who never got his win back over Yokozuna. Fuck you.", media_ids: [mediaIdStr] }
+
+      T.post('statuses/update', params, function (err, data, response) {
+        console.log("Replied to Hulk's Tweet")
 		})
       }
     })
