@@ -122,7 +122,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
   })
 }
 	if (tweet.user.screen_name === 'DrJillStein') {
-	var b64content = fs.readFileSync('./pics/hulk.gif', { encoding: 'base64' })
+	var b64content = fs.readFileSync('./pics/jill.gif', { encoding: 'base64' })
 	var jillmessages = session.object.jillmessages;
 	var randomjillmessage = jillmessages[Math.floor(Math.random() * jillmessages.length)];
 // first we must post the media to Twitter
