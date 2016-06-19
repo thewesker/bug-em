@@ -14,7 +14,7 @@ var T = new Twit({
 
 // filter the public stream by english tweets containing `#apple`
 //
-var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 216776631, 179932936' }) 
+var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 216776631, 179932936, 111216929, 95713333' }) 
 stream.on('tweet', function (tweet) {
 	if (tweet.user.screen_name === 'realDonaldTrump') {
 	var b64content = fs.readFileSync('./pics/trump.gif', { encoding: 'base64' })
@@ -35,7 +35,6 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
       var params = {in_reply_to_status_id: nameID, status: '@' + name + ' ' + randomtrumpmessage, media_ids: [mediaIdStr] }
-      var DMparams = {user_id: '34867699', text: 'I tweeted ' + randomtrumpmessage + ' at ' + name, media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Trump's Tweet with " + randomtrumpmessage)
@@ -62,7 +61,6 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
       var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomhillarymessage, media_ids: [mediaIdStr] }
-      var DMparams = {user_id: '34867699', text: 'I tweeted ' + randomtrumpmessage + ' at ' + name, media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Hillary's Tweet with " + randomhillarymessage)
@@ -89,7 +87,6 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
       var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomberniemessage, media_ids: [mediaIdStr] }
-      var DMparams = {user_id: '34867699', text: 'I tweeted ' + randomtrumpmessage + ' at ' + name, media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Bernie's Tweet with " + randomberniemessage)
@@ -116,10 +113,61 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
       var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomhulkmessage, media_ids: [mediaIdStr] }
-      var DMparams = {user_id: '34867699', text: 'I tweeted ' + randomtrumpmessage + ' at ' + name, media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Hulk's Tweet with " + randomhulkmessage)
+		})
+      }
+    })
+  })
+}
+	if (tweet.user.screen_name === 'DrJillStein') {
+	var b64content = fs.readFileSync('./pics/hulk.gif', { encoding: 'base64' })
+	var jillmessages = session.object.jillmessages;
+	var randomjillmessage = jillmessages[Math.floor(Math.random() * jillmessages.length)];
+// first we must post the media to Twitter
+T.post('media/upload', { media_data: b64content }, function (err, data, response) {
+  // now we can assign alt text to the media, for use by screen readers and
+  // other text-based presentations and interpreters
+  var mediaIdStr = data.media_id_string
+  var altText = "There isn't actually much point to this but whatever"
+  var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
+  var nameID = tweet.id_str;
+  var name = tweet.user.screen_name;
+
+  T.post('media/metadata/create', meta_params, function (err, data, response) {
+    if (!err) {
+      // now we can reference the media and post a tweet (media will attach to the tweet)
+      var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomjillmessage, media_ids: [mediaIdStr] }
+
+      T.post('statuses/update', params, function (err, data, response) {
+        console.log("Replied to Jill Stein's Tweet with " + randomjillmessage)
+		})
+      }
+    })
+  })
+}
+	if (tweet.user.screen_name === 'GovGaryJohnson') {
+	var b64content = fs.readFileSync('./pics/gary.gif', { encoding: 'base64' })
+	var garymessages = session.object.garymessages;
+	var randomgarymessage = garymessages[Math.floor(Math.random() * garymessages.length)];
+// first we must post the media to Twitter
+T.post('media/upload', { media_data: b64content }, function (err, data, response) {
+  // now we can assign alt text to the media, for use by screen readers and
+  // other text-based presentations and interpreters
+  var mediaIdStr = data.media_id_string
+  var altText = "There isn't actually much point to this but whatever"
+  var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
+  var nameID = tweet.id_str;
+  var name = tweet.user.screen_name;
+
+  T.post('media/metadata/create', meta_params, function (err, data, response) {
+    if (!err) {
+      // now we can reference the media and post a tweet (media will attach to the tweet)
+      var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomgarymessage, media_ids: [mediaIdStr] }
+
+      T.post('statuses/update', params, function (err, data, response) {
+        console.log("Replied to Gary Johnson's Tweet with " + randomgarymessage)
 		})
       }
     })
