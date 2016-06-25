@@ -1,13 +1,41 @@
 {
-  "trumpmessages": [
-    "Delete your account.",
-    "Trump smells bad.",
-    "You're gonna lose, cheeto monster!",
-    "HAHAHAHAHAHA",
-    "What a terrible tweet!",
-    "Nope!",
-    "Donald Dump",
-    "Tronald Dump"
+  "trump": [
+  {
+	"message": "Delete your account.",
+	"gif": "./pics/trump.gif"
+	},
+	{
+	"message": "Trump smells bad.",
+	"gif": "./pics/trump.gif"
+	},
+	{
+    "message": "You're gonna lose, cheeto monster!",
+	"gif": "./pics/trump.gif"
+	},
+	{
+    "message": "HAHAHAHAHAHA",
+	"gif": "./pics/trump.gif"
+	{
+    "message": "What a terrible tweet!",
+	"gif": "./pics/trump.gif"
+	},
+	{
+    "message": "Nope!",
+	"gif": "./pics/trump.gif"
+	},
+	{
+    "message": "Donald Dump",
+	"gif": "./pics/trump.gif"
+	},
+	{
+    "message": "Tronald Dump",
+	"gif": "./pics/trump.gif"
+	},
+	{
+	"message": "Shut the FUCK up, Donny"
+	"gif": "./pics/donny.gif"
+	}
+	
   ],
   "hillarymessages": [
   	"Release the Benghazi emails!",

@@ -14,12 +14,15 @@ var T = new Twit({
 
 // filter the public stream by english tweets containing `#apple`
 //
-var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 179932936, 6160792, 2853461537' }) 
+var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 179932936, 6160792, 2853461537, 1214598626' }) 
 stream.on('tweet', function (tweet) {
-	if (tweet.user.screen_name === 'realDonaldTrump') {
-	var b64content = fs.readFileSync('./pics/trump.gif', { encoding: 'base64' })
-	var trumpmessages = session.object.trumpmessages;
+	if (tweet.user.screen_name === 'AwfulJack') {
+	var trumpmessages = session.object.trump;
 	var randomtrumpmessage = trumpmessages[Math.floor(Math.random() * trumpmessages.length)];
+	var trumpmessage = randomtrumpmessage.pluck('message');
+	var trumpgif = randomtrumpmessage.pluck('gif');
+	var b64content = fs.readFileSync(trumpgif, { encoding: 'base64' })
+	
 	
 // first we must post the media to Twitter
 T.post('media/upload', { media_data: b64content }, function (err, data, response) {
