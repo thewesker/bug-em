@@ -19,8 +19,8 @@ stream.on('tweet', function (tweet) {
 	if (tweet.user.screen_name === 'AwfulJack') {
 	var trumpmessages = session.object.trump;
 	var randomtrumpmessage = trumpmessages[Math.floor(Math.random() * trumpmessages.length)];
-	var trumpmessage = randomtrumpmessage.pluck('message');
-	var trumpgif = randomtrumpmessage.pluck('gif');
+	var trumpmessage = randomtrumpmessage.map('message');
+	var trumpgif = randomtrumpmessage.map('gif');
 	var b64content = fs.readFileSync(trumpgif, { encoding: 'base64' })
 	
 	
