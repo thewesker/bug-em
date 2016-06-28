@@ -1,11 +1,18 @@
 var Twit = require('twit')
 var fs = require('fs')
-var Screenshot = require('url-to-screenshot');
 var low = require('lowdb');
-var join = require('path').join;
 var childProcess = require('child_process')
 var storage = require('lowdb/file-sync');
 var session = low('./config.json', {'storage': storage});
+var path = require('path')
+var childProcess = require('child_process')
+var phantomjs = require('phantomjs-prebuilt')
+var binPath = phantomjs.path
+var _ = require('wegweg')({
+  globals: false,
+  shelljs: false
+})
+var screenshot = require('url-screenshot')
 
 var T = new Twit({
   consumer_key:         'XEpOzvNVnIL0z5cFggsZQzrTt',
@@ -22,15 +29,18 @@ stream.on('tweet', function (tweet) {
 	if (tweet.user.screen_name === 'a__robot') {
 	var nameID = tweet.id_str;
 	var trumptweeturl = 'https://twitter.com/a__robot/status/' + nameID;
-	console.log(trumptweeturl);
-	
-	var s = Screenshot(trumptweeturl).width(800).capture(function (err, img) {
-    if (err) throw err;
-    fs.writeFileSync(join('./pics/trump.png'), img);
-    console.log('saved to trump.png');
-	});
-	console.log(s);
   
+	ss_opt = {
+		url: trumptweeturl
+		outfile: './pics.trump.png'
+		}
+		 
+		await screenshot ss_opt, defer e,outfile
+		 
+		console.log e
+		console.log outfile
+		 
+		process.exit 0
 	var trumpmessages = session.object.trumpmessages;
 	var randomtrumpmessage = trumpmessages[Math.floor(Math.random() * trumpmessages.length)];
 	var b64content = fs.readFileSync('./pics/trump.png', { encoding: 'base64' })
@@ -54,6 +64,10 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Trump's Tweet with " + randomtrumpmessage)
 		})
+		T.post('statuses/update', {status: randomtrumpmessage + ' ' + trumptweeturl}, function (err, data, response) {
+			console.log("Posted tweet with " + randomtrumpmessage)
+		})
+		}
       }
     })
   })
