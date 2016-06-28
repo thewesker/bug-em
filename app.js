@@ -37,7 +37,7 @@ stream.on('tweet', function (tweet) {
 		
 		console.log(outfile);
 		 
-		process.exit 0
+		
 	var trumpmessages = session.object.trumpmessages;
 	var randomtrumpmessage = trumpmessages[Math.floor(Math.random() * trumpmessages.length)];
 	var b64content = fs.readFileSync('./pics/trump.png', { encoding: 'base64' })
