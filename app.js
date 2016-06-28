@@ -31,7 +31,7 @@ stream.on('tweet', function (tweet) {
 	var trumptweeturl = 'https://twitter.com/a__robot/status/' + nameID;
   
 	ss_opt = {
-		url: trumptweeturl
+		url: trumptweeturl,
 		outfile: './pics.trump.png'
 		}
 		 
