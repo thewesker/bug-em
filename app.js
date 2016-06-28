@@ -23,7 +23,7 @@ var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 179932
 stream.on('tweet', function (tweet) {
 	if (tweet.user.screen_name === 'a__robot') {
 	var nameID = tweet.id_str;
-	var trumptweeturl = { 'https://twitter.com/a__robot/status/' + nameID };
+	var trumptweeturl = 'https://twitter.com/a__robot/status/' + nameID;
 	
 	screenshot(trumptweeturl)
 	.width(500)
