@@ -69,7 +69,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 		})
 		
       
-    })
+    }
   })
 }
   if (tweet.user.screen_name === 'HillaryClinton') {
