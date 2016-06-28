@@ -60,13 +60,15 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Trump's Tweet with " + randomtrumpmessage)
-		}),
-		
+		})
+	}
+  }
+})
 		T.post('statuses/update', {status: randomtrumpmessage + ' ' + trumptweeturl}, function (err, data, response) {
 			console.log("Posted tweet with " + randomtrumpmessage)
 		})
-		}
-      }
+		
+      
     })
   })
 }
