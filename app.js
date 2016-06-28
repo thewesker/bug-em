@@ -31,7 +31,7 @@ stream.on('tweet', function (tweet) {
 	.clip()
 	.capture(function(err, img) {
     if (err) throw err;
-    fs.writeFileSync(__dirname + '/pics/trump.png', img);
+    fs.writeFileSync(__dirname + './pics/trump.png', img);
     console.log('screenshot saved as trump.png');
   });
   
