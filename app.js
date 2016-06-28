@@ -33,12 +33,9 @@ stream.on('tweet', function (tweet) {
 	ss_opt = {
 		url: trumptweeturl,
 		outfile: './pics.trump.png'
-		}
-		 
-		await screenshot ss_opt, defer e,outfile
-		 
-		console.log e
-		console.log outfile
+		}	 
+		
+		console.log(outfile);
 		 
 		process.exit 0
 	var trumpmessages = session.object.trumpmessages;
