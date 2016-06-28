@@ -2,7 +2,7 @@ var Twit = require('twit')
 var fs = require('fs')
 var Screenshot = require('url-to-screenshot');
 var low = require('lowdb');
-var path = require('path')
+var join = require('path').join;
 var childProcess = require('child_process')
 var phantomjs = require('phantomjs-prebuilt')
 var binPath = phantomjs.path
@@ -26,7 +26,10 @@ stream.on('tweet', function (tweet) {
 	var trumptweeturl = 'https://twitter.com/a__robot/status/' + nameID;
 	console.log(trumptweeturl);
 	
-	var s = Screenshot(trumptweeturl).width(800);
+	var s = Screenshot(trumptweeturl).width(800).capture(function (err, img) {
+    if (err) throw err;
+    fs.writeFileSync(join('./pics/trump.png'), img);
+    console.log('saved to trump.png');
 	console.log(s);
   
 	var trumpmessages = session.object.trumpmessages;
