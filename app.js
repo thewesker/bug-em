@@ -25,7 +25,7 @@ stream.on('tweet', function (tweet) {
 	var nameID = tweet.id_str;
 	var trumptweeturl = 'https://twitter.com/a__robot/status/' + nameID;
 	
-	screenshot(trumptweeturl)
+	var s = screenshot(trumptweeturl)
 	.width(500)
 	.height(500)
 	.clip()
