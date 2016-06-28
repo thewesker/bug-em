@@ -26,23 +26,10 @@ var T = new Twit({
 //
 var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 179932936, 6160792, 2853461537, 1214598626' }) 
 stream.on('tweet', function (tweet) {
-	if (tweet.user.screen_name === 'a__robot') {
-	var nameID = tweet.id_str;
-	var trumptweeturl = 'https://twitter.com/a__robot/status/' + nameID;
-  
-	ss_opt = {
-		url: trumptweeturl,
-		outfile: './pics.trump.png'
-		}	 
-		
-		console.log(outfile);
-		 
-		
+  if (tweet.user.screen_name === 'realDonaldTrump') {
+	var b64content = fs.readFileSync('./pics/trump.gif', { encoding: 'base64' })
 	var trumpmessages = session.object.trumpmessages;
 	var randomtrumpmessage = trumpmessages[Math.floor(Math.random() * trumpmessages.length)];
-	var b64content = fs.readFileSync('./pics/trump.png', { encoding: 'base64' })
-	
-	
 // first we must post the media to Twitter
 T.post('media/upload', { media_data: b64content }, function (err, data, response) {
   // now we can assign alt text to the media, for use by screen readers and
@@ -56,20 +43,13 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
   T.post('media/metadata/create', meta_params, function (err, data, response) {
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
-      var params = {in_reply_to_status_id: nameID, status: '@' + name + ' ' + randomtrumpmessage, media_ids: [mediaIdStr] }
+      var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomtrumpmessage, media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Trump's Tweet with " + randomtrumpmessage)
 		})
-	}
-  })
-})
-		T.post('statuses/update', {status: randomtrumpmessage + ' ' + trumptweeturl}, function (err, data, response) {
-			console.log("Posted tweet with " + randomtrumpmessage)
-		})
-		
-      
-    }
+      }
+    })
   })
 }
   if (tweet.user.screen_name === 'HillaryClinton') {
