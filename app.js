@@ -26,15 +26,8 @@ stream.on('tweet', function (tweet) {
 	var trumptweeturl = 'https://twitter.com/a__robot/status/' + nameID;
 	console.log(trumptweeturl);
 	
-	var s = screenshot(trumptweeturl)
-	.width(500)
-	.height(500)
-	.clip()
-	.capture(function(err, img) {
-    if (err) throw err;
-    fs.writeFileSync('./pics/trump.png', img);
-    console.log('screenshot saved as trump.png');
-  });
+	var s = Screenshot(trumptweeturl).width(800);
+	console.log(s);
   
 	var trumpmessages = session.object.trumpmessages;
 	var randomtrumpmessage = trumpmessages[Math.floor(Math.random() * trumpmessages.length)];
