@@ -30,6 +30,7 @@ stream.on('tweet', function (tweet) {
     if (err) throw err;
     fs.writeFileSync(join('./pics/trump.png'), img);
     console.log('saved to trump.png');
+	});
 	console.log(s);
   
 	var trumpmessages = session.object.trumpmessages;
