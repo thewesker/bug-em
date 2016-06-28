@@ -1,6 +1,6 @@
 var Twit = require('twit')
 var fs = require('fs')
-var screenshot = require('url-to-screenshot');
+var Screenshot = require('url-to-screenshot');
 var low = require('lowdb');
 var path = require('path')
 var childProcess = require('child_process')
