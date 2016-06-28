@@ -6,7 +6,9 @@
   "dependencies": {
     "fs": "^0.0.2",
     "twit": "^2.2.4",
-    "lowdb": "^0.12.5"
+    "lowdb": "^0.12.5",
+	"phantomjs-prebuilt": "^2.1.7",
+	"url-to-screenshot": "^0.6.1"
   },
   "devDependencies": {},
   "scripts": {

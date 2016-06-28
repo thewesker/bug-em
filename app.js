@@ -1,6 +1,11 @@
 var Twit = require('twit')
 var fs = require('fs')
+var screenshot = require('url-to-screenshot');
 var low = require('lowdb');
+var path = require('path')
+var childProcess = require('child_process')
+var phantomjs = require('phantomjs-prebuilt')
+var binPath = phantomjs.path
 var storage = require('lowdb/file-sync');
 var session = low('./config.json', {'storage': storage});
 
@@ -16,12 +21,23 @@ var T = new Twit({
 //
 var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 179932936, 6160792, 2853461537, 1214598626' }) 
 stream.on('tweet', function (tweet) {
-	if (tweet.user.screen_name === 'AwfulJack') {
-	var trumpmessages = session.object.trump;
+	if (tweet.user.screen_name === 'a__robot') {
+	var nameID = tweet.id_str;
+	var trumptweeturl = { 'https://twitter.com/a__robot/status/' + nameID };
+	
+	screenshot(trumptweeturl)
+	.width(500)
+	.height(500)
+	.clip()
+	.capture(function(err, img) {
+    if (err) throw err;
+    fs.writeFileSync(__dirname + '/pics/trump.png', img);
+    console.log('screenshot saved as trump.png');
+  });
+  
+	var trumpmessages = session.object.trumpmessages;
 	var randomtrumpmessage = trumpmessages[Math.floor(Math.random() * trumpmessages.length)];
-	var trumpmessage = randomtrumpmessage.map('message');
-	var trumpgif = randomtrumpmessage.map('gif');
-	var b64content = fs.readFileSync(trumpgif, { encoding: 'base64' })
+	var b64content = fs.readFileSync('./pics/trump.png', { encoding: 'base64' })
 	
 	
 // first we must post the media to Twitter
