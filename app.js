@@ -4,7 +4,6 @@ var Screenshot = require('url-to-screenshot');
 var low = require('lowdb');
 var join = require('path').join;
 var childProcess = require('child_process')
-var phantomjs = require('phantomjs-prebuilt')
 var binPath = phantomjs.path
 var storage = require('lowdb/file-sync');
 var session = low('./config.json', {'storage': storage});
