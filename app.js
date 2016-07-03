@@ -4,15 +4,6 @@ var low = require('lowdb');
 var childProcess = require('child_process')
 var storage = require('lowdb/file-sync');
 var session = low('./config.json', {'storage': storage});
-var path = require('path')
-var childProcess = require('child_process')
-var phantomjs = require('phantomjs-prebuilt')
-var binPath = phantomjs.path
-var _ = require('wegweg')({
-  globals: false,
-  shelljs: false
-})
-var screenshot = require('url-screenshot')
 
 var T = new Twit({
   consumer_key:         'XEpOzvNVnIL0z5cFggsZQzrTt',
