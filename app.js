@@ -24,7 +24,7 @@ var T = new Twit({
 
 // filter the public stream by english tweets containing `#apple`
 //
-var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 179932936, 6160792, 2853461537, 1214598626' }) 
+var stream = T.stream('statuses/filter', { follow: '25073877, 1339835893, 179932936, 172933437' }) 
 stream.on('tweet', function (tweet) {
   if (tweet.user.screen_name === 'realDonaldTrump') {
 	var b64content = fs.readFileSync('./pics/trump.gif', { encoding: 'base64' })
@@ -104,10 +104,10 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     })
   })
 }
-	if (tweet.user.screen_name === 'Nero') {
+	if (tweet.user.screen_name === 'waynecoyne') {
 	var b64content = fs.readFileSync('./pics/nero.gif', { encoding: 'base64' })
-	var neromessages = session.object.neromessages;
-	var randomneromessage = neromessages[Math.floor(Math.random() * neromessages.length)];
+	var waynemessages = session.object.waynemessages;
+	var randomwaynemessage = waynemessages[Math.floor(Math.random() * waynemessages.length)];
 // first we must post the media to Twitter
 T.post('media/upload', { media_data: b64content }, function (err, data, response) {
   // now we can assign alt text to the media, for use by screen readers and
@@ -121,36 +121,10 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
   T.post('media/metadata/create', meta_params, function (err, data, response) {
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
-      var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomneromessage, media_ids: [mediaIdStr] }
+      var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomwaynemessage }
 
       T.post('statuses/update', params, function (err, data, response) {
-        console.log("Replied to Milo's Tweet with " + randomneromessage)
-		})
-      }
-    })
-  })
-}
-	if (tweet.user.screen_name === 'ScottAdamsSays') {
-	var b64content = fs.readFileSync('./pics/scott.gif', { encoding: 'base64' })
-	var scottmessages = session.object.scottmessages;
-	var randomscottmessage = scottmessages[Math.floor(Math.random() * scottmessages.length)];
-// first we must post the media to Twitter
-T.post('media/upload', { media_data: b64content }, function (err, data, response) {
-  // now we can assign alt text to the media, for use by screen readers and
-  // other text-based presentations and interpreters
-  var mediaIdStr = data.media_id_string
-  var altText = "There isn't actually much point to this but whatever"
-  var meta_params = { media_id: mediaIdStr, alt_text: { text: altText } }
-  var nameID = tweet.id_str;
-  var name = tweet.user.screen_name;
-
-  T.post('media/metadata/create', meta_params, function (err, data, response) {
-    if (!err) {
-      // now we can reference the media and post a tweet (media will attach to the tweet)
-      var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomscottmessage, media_ids: [mediaIdStr] }
-
-      T.post('statuses/update', params, function (err, data, response) {
-        console.log("Replied to Gary Johnson's Tweet with " + randomscottmessage)
+        console.log("Replied to Wayne Coyne's Tweet with " + randomwaynemessage)
 		})
       }
     })
