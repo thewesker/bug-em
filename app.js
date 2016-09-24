@@ -15,7 +15,7 @@ var T = new Twit({
 
 // filter the public stream by english tweets containing `#apple`
 //
-var stream = T.stream('statuses/filter', { follow: '25073877, 31176345' }) 
+var stream = T.stream('statuses/filter', { follow: '25073877, 31176345, 236487888' }) 
 stream.on('tweet', function (tweet) {
   if (tweet.user.screen_name === 'realDonaldTrump') {
 	var b64content = fs.readFileSync('./pics/trump.gif', { encoding: 'base64' })
@@ -69,7 +69,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     })
   })
 }
-	if (tweet.user.screen_name === 'HulkHogan') {
+	if (tweet.user.screen_name === 'WalshFreedom') {
 	var b64content = fs.readFileSync('./pics/hulk.gif', { encoding: 'base64' })
 	var hulkmessages = session.object.hulkmessages;
 	var randomhulkmessage = hulkmessages[Math.floor(Math.random() * hulkmessages.length)];
@@ -86,10 +86,10 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
   T.post('media/metadata/create', meta_params, function (err, data, response) {
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
-      var params = {in_reply_to_status_id: nameID, status: '@' + name + " " + randomhulkmessage, media_ids: [mediaIdStr] }
+      var params = {in_reply_to_status_id: nameID, status: '@' + name + " pay your child support" }
 
       T.post('statuses/update', params, function (err, data, response) {
-        console.log("Replied to Hulk's Tweet with " + randomhulkmessage)
+        console.log("Replied to Walsh's Tweet with " + randomhulkmessage)
 		})
       }
     })
