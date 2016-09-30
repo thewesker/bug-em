@@ -43,7 +43,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
     })
   })
 }
-  if (tweet.user.screen_name === 'blues_traveler') {
+  if (tweet.user.screen_name === 'poops_traveler') {
 	var b64content = fs.readFileSync('./pics/popper.gif', { encoding: 'base64' })
 	var poppermessages = session.object.poppermessages;
 	var randompoppermessage = poppermessages[Math.floor(Math.random() * poppermessages.length)];
