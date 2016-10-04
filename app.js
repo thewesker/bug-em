@@ -70,7 +70,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
   })
 }
 	if (tweet.user.screen_name === 'WalshFreedom') {
-	var b64content = fs.readFileSync('./pics/hulk.gif', { encoding: 'base64' })
+	var b64content = fs.readFileSync('./pics/walsh.jpg', { encoding: 'base64' })
 	var hulkmessages = session.object.hulkmessages;
 	var randomhulkmessage = hulkmessages[Math.floor(Math.random() * hulkmessages.length)];
 // first we must post the media to Twitter
@@ -86,7 +86,7 @@ T.post('media/upload', { media_data: b64content }, function (err, data, response
   T.post('media/metadata/create', meta_params, function (err, data, response) {
     if (!err) {
       // now we can reference the media and post a tweet (media will attach to the tweet)
-      var params = {in_reply_to_status_id: nameID, status: '@' + name + " pay your child support" }
+      var params = {in_reply_to_status_id: nameID, status: '@' + name + " pay your child support", media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, function (err, data, response) {
         console.log("Replied to Walsh's Tweet with " + randomhulkmessage)
